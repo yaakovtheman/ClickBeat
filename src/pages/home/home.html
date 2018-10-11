@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>
+    Click "<i>heart</i>" when you feel a beat.
+  </p>
+  <h1>time: {{time}}</h1><h1>beat: {{beatsForMinute}}  </h1>
+  <div class="heart-box">
+  <img [hidden]=isActive class="heart-img" [src]=heartSrc (mousedown)=beat()>
+    <img [hidden]=!isActive (mouseup)="clickUp()" class="heart-img" [src]=heartcSrc >
+    <heart-range [beats]="beatsForMinute"></heart-range>
+  </div>
+
+  <button (click)=resetBeat()>reset</button>
+
+</ion-content>
