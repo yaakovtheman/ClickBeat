@@ -20,16 +20,23 @@ export class HeartRange {
   hiimg : string = this.imgDir + "hi.png";
   lowimg : string = this.imgDir + "low.png";
   goodimg : string = this.imgDir + "good.png";
-  aStatus: string ="";
-  cStatus: string ="";
-  bStatus: string ="";
+  defimg : string = this.imgDir + "def.png";
+  aStatus: string =this.defimg;
+  cStatus: string =this.defimg;
+  bStatus: string =this.defimg;
 
   constructor(public navCtrl: NavController) {
 
   }
+  doDefImg(){
+    this.aStatus =this.defimg;
+    this.cStatus =this.defimg;
+    this.bStatus =this.defimg;
+  }
   updateTypes(){
     console.log("update, beats: "+ this._beats)
     if(!this._beats || this._beats <= 0){
+      this.doDefImg();
         return;
     }
     if(this._beats <= 190 && this._beats >= 100){
