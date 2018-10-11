@@ -1,0 +1,8 @@
+{
+  "name": "ClickBeat",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "6fe3b0af"
+}
