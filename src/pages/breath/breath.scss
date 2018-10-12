@@ -1,4 +1,4 @@
-page-home {
+breath {
   .heart-img{
 
   }
@@ -11,5 +11,11 @@ page-home {
   }
   .main-box{
     direction: rtl;
+  }
+  .breath-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 10%;
   }
 }

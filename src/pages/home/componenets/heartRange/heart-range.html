@@ -1,8 +1,26 @@
-<div>
-  <img [src]=adoultimg>
-  <img [src]=aStatus>
-  <img [src]=childimg>
-  <img [src]=cStatus>
-  <img [src]=babyimg>
-  <img [src]=bStatus>
+<div class="grid-box">
+<ion-grid>
+  <ion-row>
+    <ion-col col-lg-3>
+      <img [src]=adoultimg></ion-col>
+      <ion-col col-lg-1>
+      <img class="img-status" [src]=aStatus>
+    </ion-col>
+    <ion-col col-lg-3>
+      <img [src]=childimg></ion-col>
+      <ion-col col-lg-1>
+      <img class="img-status" [src]=cStatus>
+    </ion-col>
+    <ion-col col-lg-3>
+      <img [src]=babyimg></ion-col>
+      <ion-col col-lg-1>
+      <img class="img-status" [src]=bStatus>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4><span class="caption">{{medicParams.aLowValue}} - {{medicParams.aHiValue}}</span> </ion-col>
+    <ion-col col-4><span class="caption">{{medicParams.cLowValue}} - {{medicParams.cHiValue}}</span> </ion-col>
+    <ion-col col-4><span class="captios">{{medicParams.bLowValue}} - {{medicParams.bHiValue}}</span> </ion-col>
+  </ion-row>
+</ion-grid>
 </div>

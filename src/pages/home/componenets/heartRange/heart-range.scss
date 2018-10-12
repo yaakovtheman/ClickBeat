@@ -1,6 +1,18 @@
 heart-range {
 img{
-  width: 15%;
-  height: 15%;
+  position: absolute;
+  bottom: 5px;
 }
+  div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 90%;
+  }
+  .caption {
+    display: block;
+  }
+  .grid-box{
+    padding-top: 15%;
+  }
 }

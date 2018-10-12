@@ -11,12 +11,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HeartRange } from "../pages/home/componenets/heartRange/heart-range";
+import {Dialogs} from "@ionic-native/dialogs";
+import {Breath} from "../pages/breath/breath";
 
 @NgModule({
   declarations: [
     HeartRange,
     MyApp,
     AboutPage,
+    Breath,
     ContactPage,
     HomePage,
     TabsPage
@@ -29,6 +32,7 @@ import { HeartRange } from "../pages/home/componenets/heartRange/heart-range";
   entryComponents: [
     MyApp,
     AboutPage,
+    Breath,
     ContactPage,
     HomePage,
     TabsPage
@@ -36,6 +40,7 @@ import { HeartRange } from "../pages/home/componenets/heartRange/heart-range";
   providers: [
     StatusBar,
     SplashScreen,
+    Dialogs,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

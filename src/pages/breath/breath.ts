@@ -4,15 +4,15 @@ import { Dialogs } from '@ionic-native/dialogs';
 import {MedicPrams} from "../../classes/MedicPrams";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'breath',
+  templateUrl: 'breath.html'
 })
-export class HomePage {
+export class Breath {
 
   constructor(public navCtrl: NavController, private dialogs: Dialogs) {
-    this.medicPrams = new MedicPrams(100,60,190,100,140,60)
+    this.medicPrams = new MedicPrams(18,12,40,24,30,18);
   }
-  medicPrams : MedicPrams;
+  medicPrams: MedicPrams;
   isStart: boolean = false;
   startTime: number;
   beats: number;
@@ -20,7 +20,7 @@ export class HomePage {
   time: string;
   sconds: number;
   timerId: number;
-  heartSrc: string = "assets/imgs/heart.png";
+  heartSrc: string = "assets/imgs/lung.png";
   heartcSrc: string = "assets/imgs/heartC.png";
   isActive: boolean = false;
 
@@ -62,7 +62,7 @@ export class HomePage {
     this.timerId = setInterval(() => {
       this.sconds++;
       this.time = "" + this.sconds;
-      if(this.sconds==15){
+      if(this.sconds==30){
         this.dialogs.beep(3);
       }
       // this.myDate = new Date();
