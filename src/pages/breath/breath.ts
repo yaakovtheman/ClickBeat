@@ -20,6 +20,10 @@ export class Breath {
   time: string;
   sconds: number;
   timerId: number;
+  beatTime: Date;
+  lastBeat: number;
+  isFreez: boolean;
+  currentSec: number;
   heartSrc: string = "assets/imgs/lung.png";
   heartcSrc: string = "assets/imgs/heartC.png";
   isActive: boolean = false;
@@ -29,8 +33,12 @@ export class Breath {
       this.beats++;
       this.setRate();
     } else {
-      let d = new Date();
-      this.startTime = Math.round(d.getTime() / 1000);
+      if(this.freez()){
+        this.resetBeat();
+        this.isFreez = false;
+      }
+      this.beatTime = new Date();
+      this.startTime = Math.round(this.beatTime.getTime() / 1000);
       this.beats = 1;
       this.isStart = true;
       this.startTimer();
@@ -40,8 +48,8 @@ export class Breath {
 
   setRate() {
     let d = new Date();
-    let currentSec = Math.round(d.getTime() / 1000);
-    let elaps = currentSec - this.startTime;
+    this.currentSec = Math.round(d.getTime() / 1000);
+    let elaps = this.currentSec - this.startTime;
     let myBeat = (60 / elaps) * this.beats;
     this.beatsForMinute = "" + Math.round(myBeat);
   }
@@ -63,7 +71,16 @@ export class Breath {
       this.sconds++;
       this.time = "" + this.sconds;
       if(this.sconds==30){
-        this.dialogs.beep(3);
+        this.dialogs.beep(1);
+      }
+      let d = new Date();
+      if(this.currentSec){
+        let currentSec = Math.round(d.getTime() / 1000);
+        let elaps = currentSec - this.currentSec;
+        console.log("currentSec: " + currentSec + " lastBeat: "+this.currentSec + " elaps: "+ elaps);
+        if(elaps > 9){
+          this.freez();
+        }
       }
       // this.myDate = new Date();
     }, 1000);
@@ -71,7 +88,14 @@ export class Breath {
   clickUp(){
     this.isActive = false;
   }
-  //setTimeout(myFunction, 3000)
+  freez(){
+    this.isStart = false;
+    this.isFreez = true;
+    this.lastBeat = null;
+    if (this.timerId) {
+      clearInterval(this.timerId);
+    }
+  }
 
 
 }

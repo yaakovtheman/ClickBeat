@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>נשימה</ion-title>
+    <ion-title>נשימות</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,6 +13,10 @@
     <heart-range [medicParams]="medicPrams" [beats]="beatsForMinute"></heart-range>
   </div>
 
-  <button (click)=resetBeat()>איפוס</button>
+  <button ion-button round (click)=resetBeat()>
+    <ion-icon name="refresh"></ion-icon>
+
+    <span> איפוס&nbsp; </span>
+  </button>
   </div>
 </ion-content>
