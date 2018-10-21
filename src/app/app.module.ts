@@ -13,6 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HeartRange } from "../pages/home/componenets/heartRange/heart-range";
 import {Dialogs} from "@ionic-native/dialogs";
 import {Breath} from "../pages/breath/breath";
+import {GamePage} from "../pages/game/game";
+import {NativeAudio} from "@ionic-native/native-audio";
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import {Breath} from "../pages/breath/breath";
     AboutPage,
     Breath,
     ContactPage,
+    GamePage,
     HomePage,
     TabsPage
   ],
@@ -34,6 +37,7 @@ import {Breath} from "../pages/breath/breath";
     AboutPage,
     Breath,
     ContactPage,
+    GamePage,
     HomePage,
     TabsPage
   ],
@@ -41,6 +45,7 @@ import {Breath} from "../pages/breath/breath";
     StatusBar,
     SplashScreen,
     Dialogs,
+    NativeAudio,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

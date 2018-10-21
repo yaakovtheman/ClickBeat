@@ -18,11 +18,10 @@ export class Breath {
   beats: number;
   beatsForMinute: string;
   time: string;
-  sconds: number;
+  seconds: number;
   timerId: number;
   beatTime: Date;
-  lastBeat: number;
-  isFreez: boolean;
+  isFreeze: boolean;
   currentSec: number;
   heartSrc: string = "assets/imgs/lung.png";
   heartcSrc: string = "assets/imgs/heartC.png";
@@ -33,9 +32,9 @@ export class Breath {
       this.beats++;
       this.setRate();
     } else {
-      if(this.freez()){
+      if(this.isFreeze){
         this.resetBeat();
-        this.isFreez = false;
+        this.isFreeze = false;
       }
       this.beatTime = new Date();
       this.startTime = Math.round(this.beatTime.getTime() / 1000);
@@ -59,18 +58,18 @@ export class Breath {
     this.beatsForMinute = "";
     if (this.timerId) {
       clearInterval(this.timerId);
-      this.sconds = 0;
+      this.seconds = 0;
       this.time = "";
     }
   }
 
   startTimer() {
-    this.sconds = 0;
-    this.time = "" + this.sconds;
+    this.seconds = 0;
+    this.time = "" + this.seconds;
     this.timerId = setInterval(() => {
-      this.sconds++;
-      this.time = "" + this.sconds;
-      if(this.sconds==30){
+      this.seconds++;
+      this.time = "" + this.seconds;
+      if(this.seconds==30){
         this.dialogs.beep(1);
       }
       let d = new Date();
@@ -90,8 +89,8 @@ export class Breath {
   }
   freez(){
     this.isStart = false;
-    this.isFreez = true;
-    this.lastBeat = null;
+    this.isFreeze = true;
+    this.currentSec = null;
     if (this.timerId) {
       clearInterval(this.timerId);
     }

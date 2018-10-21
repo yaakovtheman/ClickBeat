@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      אימון
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="info-box">
+    <h1>אימון</h1>
+    <button ion-button round (click)=startTest()>
+      <ion-icon name="play"></ion-icon>
+      <span> התחל &nbsp;</span>
+    </button>
+    <img src="assets/imgs/all.png">
+  </div>
+  <span>{{beats}}</span><br/>
+  <span>{{count}}</span>
+</ion-content>

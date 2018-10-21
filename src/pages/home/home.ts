@@ -18,8 +18,11 @@ export class HomePage {
   beats: number;
   beatsForMinute: string;
   time: string;
-  sconds: number;
+  seconds: number;
   timerId: number;
+  beatTime: Date;
+  isFreeze: boolean;
+  currentSec: number;
   heartSrc: string = "assets/imgs/heart.png";
   heartcSrc: string = "assets/imgs/heartC.png";
   isActive: boolean = false;
@@ -29,8 +32,12 @@ export class HomePage {
       this.beats++;
       this.setRate();
     } else {
-      let d = new Date();
-      this.startTime = Math.round(d.getTime() / 1000);
+      if(this.isFreeze){
+        this.resetBeat();
+        this.isFreeze = false;
+      }
+      this.beatTime = new Date();
+      this.startTime = Math.round(this.beatTime.getTime() / 1000);
       this.beats = 1;
       this.isStart = true;
       this.startTimer();
@@ -40,8 +47,8 @@ export class HomePage {
 
   setRate() {
     let d = new Date();
-    let currentSec = Math.round(d.getTime() / 1000);
-    let elaps = currentSec - this.startTime;
+    this.currentSec = Math.round(d.getTime() / 1000);
+    let elaps = this.currentSec - this.startTime;
     let myBeat = (60 / elaps) * this.beats;
     this.beatsForMinute = "" + Math.round(myBeat);
   }
@@ -51,19 +58,28 @@ export class HomePage {
     this.beatsForMinute = "";
     if (this.timerId) {
       clearInterval(this.timerId);
-      this.sconds = 0;
+      this.seconds = 0;
       this.time = "";
     }
   }
 
   startTimer() {
-    this.sconds = 0;
-    this.time = "" + this.sconds;
+    this.seconds = 0;
+    this.time = "" + this.seconds;
     this.timerId = setInterval(() => {
-      this.sconds++;
-      this.time = "" + this.sconds;
-      if(this.sconds==15){
-        this.dialogs.beep(3);
+      this.seconds++;
+      this.time = "" + this.seconds;
+      if(this.seconds==15){
+        this.dialogs.beep(1);
+      }
+      let d = new Date();
+      if(this.currentSec){
+        let currentSec = Math.round(d.getTime() / 1000);
+        let elaps = currentSec - this.currentSec;
+        console.log("currentSec: " + currentSec + " lastBeat: "+this.currentSec + " elaps: "+ elaps);
+        if(elaps > 9){
+          this.freez();
+        }
       }
       // this.myDate = new Date();
     }, 1000);
@@ -71,7 +87,15 @@ export class HomePage {
   clickUp(){
     this.isActive = false;
   }
-  //setTimeout(myFunction, 3000)
+
+  freez(){
+    this.isStart = false;
+    this.isFreeze = true;
+    this.currentSec = null;
+    if (this.timerId) {
+      clearInterval(this.timerId);
+    }
+  }
 
 
 }
