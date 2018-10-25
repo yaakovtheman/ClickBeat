@@ -12,4 +12,13 @@ page-home {
   .main-box{
     direction: rtl;
   }
+  .center {
+    /* text-align: center; */
+    font-size: xx-large;
+    font-weight: 800;
+    /* border: 2px solid antiquewhite; */
+    width: 80%;
+    margin: auto;
+    max-height: 70px;
+  }
 }

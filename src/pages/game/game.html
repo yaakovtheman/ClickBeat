@@ -8,13 +8,28 @@
 
 <ion-content padding>
   <div class="info-box">
-    <h1>אימון</h1>
     <button ion-button round (click)=startTest()>
       <ion-icon name="play"></ion-icon>
-      <span> התחל &nbsp;</span>
+      <span>&nbsp; התחל &nbsp;</span>
     </button>
-    <img src="assets/imgs/all.png">
+    <button ion-button round (click)=stopPlay()>
+      <ion-icon name="hand"></ion-icon>
+      <span>&nbsp; עצור &nbsp;</span>
+    </button>
+    <h3>{{resText}}</h3>
+    <div class="container">
+    <img [className]="imgClass" src="assets/imgs/game.png">
+      <div class="centered"><span class="beat-num">{{resNum}}</span></div>
+    </div>
   </div>
-  <span>{{beats}}</span><br/>
-  <span>{{count}}</span>
+  <div class="res-box">
+  <ion-item>
+    <ion-label color="primary" fixed>תוצאה:</ion-label>
+    <ion-input [disabled]=isDis [(ngModel)]="gameRes" clearOnEdit="true"  max="190" min="40"  type="number" placeholder="דופק"></ion-input>
+  </ion-item>
+  <button ion-button round (click)=checkResult()>
+    <ion-icon name="send"></ion-icon>
+    <span>&nbsp; שלח &nbsp;</span>
+  </button>
+  </div>
 </ion-content>

@@ -1,5 +1,66 @@
-page-about {
-.info-box{
-  direction: rtl;
-}
+page-game {
+  @-webkit-keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-moz-keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-o-keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .img-ani {
+    -webkit-animation: blink 250ms;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation: blink 250ms;
+    -moz-animation-iteration-count: 1;
+    -o-animation: blink 250ms;
+    -o-animation-iteration-count: 1;
+  }
+  .container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .beat-num {
+    color: black;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: "Modern No. 20";
+  }
+  .centered {
+    position: absolute;
+    top: 68%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+  }
+
+  .res-box {
+    direction: rtl;
+    width: 60%;
+    margin: auto;
+  }
 }

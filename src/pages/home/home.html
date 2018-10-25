@@ -6,8 +6,19 @@
 
 <ion-content padding>
   <div class="main-box">
-  <h1 [ngClass]="{'time-up' : seconds >= 15}"><ion-icon name="clock"></ion-icon> {{time}}</h1><h1><ion-icon name="heart"></ion-icon> {{beatsForMinute}}  </h1>
-  <div class="heart-box">
+    <div class="center">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-lg-6>
+            <p [ngClass]="{'time-up' : seconds >= 15}"><ion-icon name="clock"></ion-icon> {{time}}</p>
+          </ion-col>
+          <ion-col col-lg-6>
+            <p><ion-icon name="heart"></ion-icon> {{beatsForMinute}}  </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
+    <div class="heart-box">
   <img [hidden]=isActive class="heart-img" [src]=heartSrc (mousedown)=beat()>
     <img [hidden]=!isActive (mouseup)="clickUp()" class="heart-img" [src]=heartcSrc >
     <heart-range [medicParams]="medicPrams" [beats]="beatsForMinute"></heart-range>
